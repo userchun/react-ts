@@ -1,19 +1,15 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { setItem } from '../../utils'
-import { Button, ButtonToolbar } from 'rsuite'
+import { Button } from 'antd'
 const Login = (props: any) => {
   const login = () => {
     setItem('auth', '1')
     setItem('token', 'token')
   }
   return (
-    <div>
-      <ButtonToolbar>
-        <Button onClick={login} color='red' appearance='ghost'>
-          登录
-        </Button>
-      </ButtonToolbar>
-    </div>
+    <Fragment>
+      <Button onClick={login}>登录</Button>
+    </Fragment>
   )
 }
 
