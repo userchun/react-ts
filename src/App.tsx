@@ -3,7 +3,8 @@ import { renderRoutes } from 'react-router-config'
 import { HashRouter as Router } from 'react-router-dom'
 import Loading from './components/Loading'
 import routes from './routes'
-import './App.less'
+import 'antd/dist/antd.less'
+
 function App() {
   return (
     <Fragment>
