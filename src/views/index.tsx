@@ -6,8 +6,8 @@ export default memo(
   withRouter(function AllViews(props: any) {
     const {
       location: { pathname },
-      history,
       route: { routes },
+      history,
     } = props
     useEffect(() => {
       const token = getItem('token')

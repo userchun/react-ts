@@ -12,12 +12,6 @@ const routes: any[] = [
     component: AllViews,
     auth: 0,
     routes: [
-      // {
-      //   path: '/',
-      //   component: Login,
-      //   exact: true,
-      //   auth: 0,
-      // },
       {
         path: '/login',
         component: Login,

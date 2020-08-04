@@ -8,7 +8,9 @@ const Login = (props: any) => {
   }
   return (
     <Fragment>
-      <Button onClick={login}>登录</Button>
+      <Button type='primary' onClick={login}>
+        登录
+      </Button>
     </Fragment>
   )
 }
