@@ -1,14 +1,18 @@
 import React, { Fragment } from 'react'
-import { setItem } from '../../utils'
+import { setItem, getItem } from '../../utils'
 import { Button } from 'antd'
+const oldAuth = getItem('auth')
 
 const Login = (props: any) => {
   const { history } = props
   const login = () => {
-    setItem('auth', '1')
+    const newAuth = '1'
+    setItem('auth', newAuth)
     setItem('token', 'token')
     history.push('/home')
-    window.location.reload()
+    if (oldAuth !== newAuth) {
+      window.location.reload()
+    }
   }
   return (
     <Fragment>
