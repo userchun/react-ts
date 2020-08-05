@@ -1,4 +1,6 @@
 import { lazy } from 'react'
+import { getItem } from '../utils'
+
 const Login = lazy(() => import('../views/Login'))
 const Home = lazy(() => import('../views/Home'))
 const Teacher = lazy(() => import('../views/Teacher'))
@@ -15,7 +17,9 @@ const routes: any[] = [
       {
         path: '/login',
         component: Login,
+        exact: true,
         auth: 0,
+        routes: [],
       },
       {
         path: '/home',
@@ -39,11 +43,10 @@ const routes: any[] = [
             path: '/home/student',
             component: Student,
             routes: [],
-            auth: 1,
+            auth: 2,
           },
           {
             path: '*',
-            exact: true,
             auth: 0,
             component: NotFound,
           },
@@ -53,22 +56,22 @@ const routes: any[] = [
         path: '*',
         component: NotFound,
         auth: 0,
-        exact: true,
       },
     ],
   },
 ]
-const auth: number = Number(localStorage.getItem('auth'))
-const fliterFun = (routes: any[]) => {
-  routes = routes.filter((v) => {
-    if ('routes' in v) {
-      fliterFun(v.routes)
+const auth: number = Number(getItem('auth'))
+const filterRoute = (routes: any[]) => {
+  routes.forEach((item, i) => {
+    if (item.routes && item.routes.length > 0) {
+      filterRoute(item.routes)
     }
-    return v.auth === auth || v.auth === 0
+    if (item.auth !== 0 && item.auth !== auth) {
+      routes.splice(i, 1)
+    }
   })
-  return routes
 }
-
-const exRoutes: any[] = fliterFun(routes)
-
-export default exRoutes
+if (auth) {
+  filterRoute(routes)
+}
+export default routes

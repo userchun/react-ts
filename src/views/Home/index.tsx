@@ -1,11 +1,17 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
+import { Button } from 'antd'
 const Home = (props: any) => {
-  const { route } = props
+  const { route, history } = props
   return (
     <div>
-      Home
+      <Button
+        onClick={() => {
+          history.push('/home/student')
+        }}>
+        跳转
+      </Button>
       <div>{renderRoutes(route.routes)}</div>
     </div>
   )

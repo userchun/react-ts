@@ -11,7 +11,7 @@ export default memo(
     } = props
     useEffect(() => {
       const token = getItem('token')
-      if (!token) {
+      if (!token || pathname === '/') {
         history.push('/login')
       }
     }, [history, pathname])

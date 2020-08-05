@@ -1,10 +1,14 @@
 import React, { Fragment } from 'react'
 import { setItem } from '../../utils'
 import { Button } from 'antd'
+
 const Login = (props: any) => {
+  const { history } = props
   const login = () => {
     setItem('auth', '1')
     setItem('token', 'token')
+    history.push('/home')
+    window.location.reload()
   }
   return (
     <Fragment>
